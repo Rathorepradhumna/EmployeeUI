@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React , {Component} from 'react' ; 
+import Emptable from './components/emptable'
 import './App.css';
+import CreateEmployeeComponent from './components/CreateEmployeeComponent'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom' ;
+import updateEmployeeComponent from './components/updateEmployeeComponent'
+import viewEmployeeComponent from './components/viewemployeecomponent'
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render(){
+    return (
+      <div className="App">
+          <Router>
+        <h1>Employee List</h1>
+        <Switch> 
+        <Route path = "/" exact component = {Emptable}></Route>
+        <Route path = "/add-employee/" component = {CreateEmployeeComponent}></Route>
+        <Route path = "/update-employee/:id" component = {CreateEmployeeComponent}></Route>
+        <Route path="/view-employee/:id" component={viewEmployeeComponent}></Route>
+        </Switch> 
+        </Router>
+      </div>
+    );
+  }
+ 
 }
 
 export default App;
